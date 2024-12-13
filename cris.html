@@ -1,0 +1,564 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+
+
+
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #0d1e0f, #6abf69); /* Dark green to light green */
+            color: #ffffff;
+           
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1a3b1d;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease;
+        }
+
+        header a {
+            text-decoration: none;
+            color: white;
+            margin: 0 10px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+            color: #2e7d32;
+            transition: color 0.3s ease;
+        }
+
+        /* Main Section */
+        .main-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            background: linear-gradient(to bottom, #0d1e0f, #1a3b1d);
+            animation: fadeIn 2s ease;
+        }
+
+        .main-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .text-content {
+            max-width: 600px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: flex-end; /* Push content to the right */
+            align-items: center; /* Vertically center */
+        }
+        
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+            transform: scale(0.8);
+            animation: bounce 2s infinite;
+            margin-left: 0; /* Reset margin-left as Flexbox handles spacing */
+        }
+        
+
+        .main-section h1 {
+            font-size: 3em;
+            font-weight: bold;
+            animation: textZoom 1.5s ease;
+            justify-content: flex-start;
+        }
+
+        .main-section p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .main-section button {
+            background-color: #2e7d32;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .main-section button:hover {
+            background-color: #388e3c;
+            transform: scale(1.1);
+        }
+
+        /* About Section */
+        .about-section {
+            background: #1a3b1d;
+            padding: 50px 20px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .about-section h2 {
+            text-align: center;
+            font-size: 2em;
+            
+        }
+
+        .about-section p {
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+            text-align: center;
+            border-radius: 8px;
+            background-color: #2e7d32;
+            padding: 15px;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 3rem 2rem;
+            background-color: #0d1e0f;
+            text-align: center;
+          }
+          
+          .skills h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 2rem;
+          }
+          
+          .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            justify-items: center;
+          }
+          
+          .skill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background-color: #1b1b1b;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            animation: fadeIn 2s ease-in-out;
+          }
+          
+          .skill:hover {
+            transform: scale(1);
+          }
+          
+          .skill img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 0.5rem;
+          }
+          
+          .skill span {
+            font-size: 1rem;
+            color: #555;
+            font-weight: bold;
+          }
+
+        /* Projects Section */
+        .projects-section {
+            background: #1a3b1d;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeInRight 1.5s ease;
+        }
+
+        .projects-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-card {
+            background: #0d1e0f;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .project-card img:hover {
+            transform: scale(1.1);
+        }
+
+        .project-card h3 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .project-card p {
+            font-size: 1em;
+            color: #cccccc;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #0d1e0f;
+            padding: 40px 10px;
+            text-align: center;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .contact-icons a {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .contact-icons a img {
+            width: 48px;
+            height: 48px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-icons a img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Keyframes */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(0.9);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes textZoom {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Text Animations */
+    .fadeInText {
+        animation: fadeInText 2s ease;
+    }
+
+    .slideInLeft {
+        animation: slideInLeft 2s ease;
+    }
+
+    .slideInRight {
+        animation: slideInRight 2s ease;
+    }
+
+    .bounceIn {
+        animation: bounceIn 1.5s ease-out;
+    
+    }
+
+    .typing-effect {
+        font-size: 1.5em;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        
+        animation: blink 0.9s step-end infinite;
+    }
+    
+    @keyframes blink {
+        100% {
+            border-color: transparent;
+        }
+    }
+    
+
+    
+
+   
+
+    
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo slideInLeft">PORTFOLIO</div>
+        <nav>
+            <a href="#home" class="fadeInText">Home</a>
+            <a href="#about" class="fadeInText">About</a>
+            <a href="#skills" class="fadeInText">Skills</a>
+            <a href="#projects" class="fadeInText">Projects</a>
+            <a href="#contact" class="fadeInText">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <section class="main-section" id="home">
+        <div class="main-content">
+            <div class="text-content">
+                <h1 class="slide">Hi, I'm Cris Morcozo!</h1>
+                <div class="typing-effect"></div>
+
+                
+                
+                <div class="container">
+                    <img class="profile-photo" src="image/Copy of morcozo_cris_cagascas (1).jpg" alt="Profile Photo">
+                </div>
+                
+                <script>const phrases = [
+                    " Hi, It's me!! Cris Morcozo ",
+                    " A Passionate Developer ",
+                    " Let's Build Something Amazing! "
+                ];
+                const typingEffect = document.querySelector(".typing-effect");
+                let i = 0; // Current phrase index
+                let j = 0; // Current character index
+                let isDeleting = false; // Track if we are deleting text
+                
+                function type() {
+                    const currentPhrase = phrases[i];
+                    if (isDeleting) {
+                        // Remove characters
+                        typingEffect.textContent = currentPhrase.slice(0, j--);
+                    } else {
+                        // Add characters
+                        typingEffect.textContent = currentPhrase.slice(0, j++);
+                    }
+                
+                    if (!isDeleting && j === currentPhrase.length) {
+                        // Pause before deleting
+                        isDeleting = true;
+                        setTimeout(type, 1000); // Pause for 1 second
+                    } else if (isDeleting && j === 0) {
+                        // Move to the next phrase
+                        isDeleting = false;
+                        i = (i + 1) % phrases.length; // Loop back to the first phrase
+                        setTimeout(type, 900); // Pause before typing the next phrase
+                    } else {
+                        // Typing or deleting continues
+                        setTimeout(type, isDeleting ? 50 : 50); // Adjust speed
+                    }
+                }
+                
+                // Start the typing effect on page load
+                window.onload = type;
+                </script>
+                <p>A dedicated developer passionate about crafting innovative and efficient digital solutions.</p>
+                <button onclick="location.href='#projects'">View Projects</button>
+            </div>
+            
+        </div>
+    </section>
+    
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <h2 class="slideInLeft">ABOUT</h2>
+        <p class="fadeInText">
+            Hi, I’m Cris! I’m a developer with a deep passion for crafting innovative and user-friendly digital experiences. With a strong foundation in coding and problem-solving, I enjoy transforming ideas into functional and visually appealing applications that meet real-world needs.
+            <br><br>
+            I’m constantly exploring new technologies to stay at the forefront of the industry and thrive on tackling challenges that push my skills further. Beyond development, I value collaboration, creativity, and building solutions that make a difference.
+            <br><br>
+            When I’m not coding, you’ll often find me diving into tech trends, brainstorming new projects, or finding inspiration in everyday life. Let’s build something amazing together!
+        </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+        <h2 class="slideInRight">
+         SKILLS
+        </h2>
+        <div class="skills-grid">
+         <div class="skill">
+          <img alt="HTML icon representing HTML skills" height="60" src="https://storage.googleapis.com/a1aa/image/vGz3Zta03dqvMdnsXcSfqEiDSuhdDFUYnLHCrMYizoHIFQ9JA.jpg" width="60"/>
+          <span>
+           HTML
+          </span>
+          <h3>85%</h3>
+         </div>
+         <div class="skill">
+          <img alt="CSS icon representing CSS skills" height="60" src="https://storage.googleapis.com/a1aa/image/mwhx4odVg6bLJF07jK0euNsh4ZYsOKXCPuEVnfYjivSRKg6TA.jpg" width="60"/>
+          <span>
+           CSS
+          </span>
+          <h3>80%</h3>
+         </div>
+         <div class="skill">
+          <img alt="JavaScript icon representing JavaScript skills" height="60" src="https://storage.googleapis.com/a1aa/image/NkyF8eHwuBwQAafMhLrafPhX7gJSz84GpeqoVBhZm5QLpAqPB.jpg" width="60"/>
+          <span>
+           JavaScript
+          </span>
+          <h3>79%</h3>
+         </div>
+         <div class="skill">
+          <img alt="Canva icon representing Canva skills" height="60" src="C:\Users\Acer\Dropbox\My PC (RodelMorcozo)\Downloads\download.jpg" width="60"/>
+          <span>
+           Canva
+          </span>
+          <h3>95%</h3>
+         </div>
+         <div class="skill">
+          <img alt="Figma icon representing Figma skills" height="60" src="C:\Users\Acer\Dropbox\My PC (RodelMorcozo)\Downloads\download.png" width="60"/>
+          <span>
+           Figma
+          </span>
+          <h3>90%</h3>
+         </div>
+        </div>
+       </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <h2 class="slideInLeft">PROJECTS</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <img src="image/461159812_760927152793260_9103148169435624737_n.png" alt="Project 1" />
+                <h3 class="fadeInText">Project 1</h3>
+                <p class="fadeInText">
+                    <b><i>Class Notify</i></b> is a user-friendly application designed to simplify scheduling for students and instructors. The app enables users to organize their academic or teaching routines seamlessly, ensuring no conflicts or missed sessions. With features like notifications, custom class setups, and easy-to-navigate interfaces, Class Notify enhances productivity and promotes effective time management.
+                </p>
+            </div>
+            <div class="project-card">
+                <img src="image/1.png" alt="Project 2" />
+                <img src="image/2.png" alt="Project 2" />
+                <img src="image/3.png" alt="Project 2" />
+                <h3 class="fadeInText">Project 2</h3>
+                <p class="fadeInText">
+                    <b><i>Microdave Studio</i></b> is a sleek and modern website showcasing a professional studio's creative space and services. The website highlights the studio's cutting-edge facilities and extensive offerings, from music production and sound recording to editing and post-production services. Built to engage clients, Microdave Studio’s site captures the essence of innovation and creativity.
+                </p>
+            </div>
+            <div class="project-card">
+                <img src="image/Screenshot 2024-12-13 203550.png" alt="Project 3" />
+                <h3 class="slideinrigth">Project 3</h3>
+                <p class="fadeInText"> <b><i>AllinOne Studio</i></b> is a comprehensive website for a versatile rental studio that caters to photography, videography, and event rentals. It offers an immersive experience to potential clients by presenting the studio’s wide range of services, from state-of-the-art equipment rentals to bespoke setups for diverse creative needs. The platform is designed to inform and attract creatives and professionals alike.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="slideInRight">CONTACTS</h2>
+        <p class="fadeInText">Feel free to reach out to me!</p>
+        <p class="fadeInText">Via:</p>
+        <div class="contact-icons">
+            <a href="https://www.facebook.com/share/1AqrufaVXZ/?mibextid=LQQJ4d" target="_blank">
+                <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook" />
+                <span class="fadeInText">Facebook</span>
+            </a>
+            <a href="mailto:morcozocris6@gmail.com">
+                <img src="https://img.icons8.com/color/48/000000/gmail-new.png" alt="Email" />
+                <span class="fadeInText">Email</span>
+            </a>
+            <a href="tel:+639079178023">
+                <img src="https://img.icons8.com/color/48/000000/phone.png" alt="Phone" />
+                <span class="fadeInText">Phone</span>
+            </a>
+        </div>
+    </section>
+</body>
+</html>
